@@ -32,6 +32,8 @@ Compile Lustre client(version ```2.16.61```) with generic ```o2ib``` on Fedora 3
    
         # Feng BuildRequires: mlnx-ofa_kernel-devel
   
+Again, hardcoded ```MLNX_OFED``` requirement. 
+
 Now:        
 ```
 make rpms
