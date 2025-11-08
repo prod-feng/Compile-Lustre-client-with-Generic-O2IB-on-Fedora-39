@@ -4,7 +4,7 @@ Compile Lustre client(version ```2.16.61```) with generic ```o2ib``` on Fedora 3
 1. Download the source file from https://github.com/lustre/lustre-release, or from WhamCloud.
 2. Ensure that you have Infiniband tool packages  installed: ```infiniband-diags perftest qperf  opensm, rdma-core-devel```
    The generic Infiniband driver comes with the kernel: ```kernel-modules-6.11.9-100.fc39```
-   The needed ```o2ib``` header files comes with package rdma-core-devel, the location of these files is: ```/usr/include/infiniband```
+   The needed ```o2ib``` header files comes with package ```rdma-core-devel```, the location of these files is: ```/usr/include/infiniband```
 3. Untar the source file, go to the lustre folder:
 
    ```
