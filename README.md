@@ -12,7 +12,7 @@ Compile Lustre client(version ```2.16.61```) with generic ```o2ib``` on Fedora 3
    ```
    If this goes smoothly, we can go to compile and make the rpm files. Before that, we need to make some modifications to let it work:
 
-4. Modify lustre.spec  (please note, each time you run "./configure" command, it will overwite lustre.spec file using the lustre.spec.in. So you can change it there too)
+4. Modify lustre.spec  (please note, each time you run "```./configure```" command, it will overwite ```lustre.spec``` file using the ```lustre.spec.in```. So you can change it there too)
 
          
          #Change line 748 to:
