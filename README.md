@@ -12,7 +12,7 @@ Compile Lustre client(version ```2.16.61```) with generic ```o2ib``` on Fedora 3
    ```
    If this goes smoothly, we can go to compile and make the rpm files. Before that, we need to make some modifications to let it work:
 
-4. Modify lustre.spec  (please note, each time you run "```./configure```" command, it will overwite ```lustre.spec``` file using the ```lustre.spec.in```. So you can change it there too)
+4. Modify ```lustre.spec```  (please note, each time you run "```./configure```" command, it will overwite ```lustre.spec``` file using the ```lustre.spec.in```. So you can change it there too)
 
          
          #Change line 748 to:
@@ -20,13 +20,14 @@ Compile Lustre client(version ```2.16.61```) with generic ```o2ib``` on Fedora 3
          # comment it's following block of %if-%endif lines
          # from line 749 to 764.
 
-#### These lines in lustre.spec are hardcoded to check MLNX_OFED package, which we do not have. The MLNX_OFED does not support Fedora 39, kernel 6.11 at present.
+#### These lines in ```lustre.spec``` are hardcoded to check ```MLNX_OFED``` package, which we do not have. The ```MLNX_OFED``` does not support ```Fedora 39```, ```kernel 6.11``` at present.
 
 5. Modify 2 KMP files:
   
         #vi rpm/kmp-lustre.preamble
         #vi rpm/kmp-lnet-o2iblnd.preamble  
         # Comment the following line:
+   
         # Feng BuildRequires: mlnx-ofa_kernel-devel
   
 Now:        
@@ -39,18 +40,18 @@ make rpms
 ```
 rpm -ivh --nodeps  kmod-lustre-client-2.16.61-1.fc39.aarch64.rpm lustre-client-2.16.61-1.fc39.aarch64.rpm
 ```
-Here we use the "--nodeps", otherwise it will fail due to error:
+Here we use the "```--nodeps```", otherwise it will fail due to error:
 ```
  Problem 1: conflicting requests
   - nothing provides /usr/sbin/weak-modules needed by kmod-lustre-client-2.16.61-1.fc39.aarch64 from @commandline
 ```
-Which we do not need, since the "weak-modules" is for DKMS, and here we are using KMOD(Kenel module).
+Which we do not need, since the "```weak-modules```" is for ```DKMS```, and here we are using ```KMOD```(Kenel module).
 
 ```
 modprod lustre
 ```
 
-Make sure the IB device works fine, like IP over IB is set, etc. And module "ko2iblnd" has been loaded into kernel as well.
+Make sure the IB device works fine, like IP over IB is set, etc. And module "```ko2iblnd```" has been loaded into kernel as well.
 
 ```
 lctl list_nids
