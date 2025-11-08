@@ -17,7 +17,9 @@ Compile Lustre client(version ```2.16.61```) with generic ```o2ib``` on Fedora 3
          
          #Change line 748 to:
          WITH_O2IB="--with-o2ib=/usr/include/infiniband/"
-         # comment it's following block of %if-%endif lines
+
+   
+         # Comment it's following block of %if-%endif lines
          # from line 749 to 764.
 
 #### These lines in ```lustre.spec``` are hardcoded to check ```MLNX_OFED``` package, which we do not have. The ```MLNX_OFED``` does not support ```Fedora 39```, ```kernel 6.11``` at present.
