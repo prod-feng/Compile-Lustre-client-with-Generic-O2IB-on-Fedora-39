@@ -8,6 +8,8 @@ Compile Lustre client(version ```2.16.61```) with generic ```o2ib``` on Fedora 3
 3. Untar the source file, go to the lustre folder:
 
    ```
+   sh autogen.sh
+   
    ./configure --disable-server --enable-client --disable-tests --enable-gss=no --disable-gss-keyring --with-o2ib=/usr/include/infiniband  --with-linux=/usr/src/kernels/6.11.9-100.fc39.aarch64
    ```
    If this goes smoothly, we can go to compile and make the rpm files. Before that, we need to make some modifications to let it work:
