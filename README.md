@@ -51,7 +51,7 @@ Here we use the "```--nodeps```", otherwise it will fail due to error:
  Problem 1: conflicting requests
   - nothing provides /usr/sbin/weak-modules needed by kmod-lustre-client-2.16.61-1.fc39.aarch64 from @commandline
 ```
-Which we do not need, since the "```weak-modules```" is for ```DKMS```, and here we are using ```KMOD```(Kenel module).
+Which we do not need, since the "```weak-modules```" is for making symlinks for the newly compiled lustre modules for minor versions of the kernels on the same server(like ```/lib/modules/*/weak-updates```), while now we only need to care our current OS kernel version. This only means each time we upgrade our OS kernel, we need re-do this process again. Fedora actaully has removed ```/usr/sbin/weak-modules``` from its ```kmod``` package, since it had many issue, but it's ```kernel-rpm-macros``` package still reference it, which may have caused this issue. We can ignore it safely here.
 
 ```
 modprod lustre
